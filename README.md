@@ -1,9 +1,9 @@
 # Modbus CRC-16
 
-[![ModBus proxy][pypi-version]](https://pypi.python.org/pypi/modbus-crc)
-[![Python Versions][pypi-python-versions]](https://pypi.python.org/pypi/modbus-crc)
-[![Pypi status][pypi-status]](https://pypi.python.org/pypi/modbus-crc)
-[![License][license]]
+![License](https://img.shields.io/badge/License-BSD%203--Clause-green)
+[![Downloads](https://img.shields.io/pypi/dm/modbus-crc.svg?color=orange)](https://pypi.python.org/pypi/modbus-crc)
+[![Latest Version](https://img.shields.io/pypi/v/modbus-crc.svg)](https://pypi.python.org/pypi/modbus-crc)
+[![Supported Python versions](https://img.shields.io/pypi/pyversions/modbus-crc.svg)](https://pypi.python.org/pypi/modbus-crc)
 
 CRC-16 calculation library for Modbus protocol
 
