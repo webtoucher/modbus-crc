@@ -18,7 +18,7 @@ $ pip install modbus-crc
 Or you can add it as dependency in requirements.txt file of your python application:
 
 ```
-modbus-crc~=1.0
+modbus-crc~=1.1
 ```
 
 Usage
