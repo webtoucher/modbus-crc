@@ -7,8 +7,8 @@
 
 CRC-16 calculation library for Modbus protocol
 
-Installation
-============
+## Installation
+
 Install it with pip:
 
 ```shell
@@ -18,11 +18,11 @@ $ pip install modbus-crc
 Or you can add it as dependency in requirements.txt file of your python application:
 
 ```
-modbus-crc~=1.1
+modbus-crc~=1.2
 ```
 
-Usage
-=====
+## Usage
+
 For signing byte package use `add_crc`:
 
 ```python
@@ -40,11 +40,11 @@ if not check_crc(b'\x00\x12\x34\xAB\xCD\xEF\xD2\xD4'):
     raise SomeException()
 ```
 
-Testing
-=======
+## Testing
+
 Use [tox](https://tox.readthedocs.io) for testing
 
 ```shell
 $ pip install tox
-$ tox
+$ python -m tox
 ```
