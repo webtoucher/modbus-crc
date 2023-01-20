@@ -20,4 +20,5 @@ setup(name='modbus-crc',
       ],
       packages=find_packages(where='src'),
       long_description=open('README.md').read(),
+      long_description_content_type='text/markdown',
       zip_safe=False)
