@@ -18,7 +18,7 @@ $ pip install modbus-crc
 Or you can add it as dependency in requirements.txt file of your python application:
 
 ```
-modbus-crc~=1.2
+modbus-crc~=1.3
 ```
 
 ## Usage
@@ -42,9 +42,6 @@ if not check_crc(b'\x00\x12\x34\xAB\xCD\xEF\xD2\xD4'):
 
 ## Testing
 
-Use [tox](https://tox.readthedocs.io) for testing
-
 ```shell
-$ pip install tox
-$ python -m tox
+$ python -m unittest discover -v -p "test.py"
 ```

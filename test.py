@@ -1,4 +1,4 @@
-from modbus_crc import add_crc, check_crc
+from src import add_crc, check_crc
 from unittest import TestCase, TestSuite, TextTestRunner
 
 

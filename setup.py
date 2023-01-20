@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='modbus-crc',
-      version='1.2',
+      version='1.3',
       url='https://github.com/webtoucher/modbus-crc',
       license='BSD-3-Clause',
       author='Alexey Kuznetsov',
@@ -18,7 +18,7 @@ setup(name='modbus-crc',
           'Operating System :: Unix',
           'Operating System :: MacOS',
       ],
-      packages=find_packages(exclude='tests'),
+      packages=find_packages(where='src'),
       long_description=open('README.md').read(),
       long_description_content_type='text/markdown',
       zip_safe=False)
