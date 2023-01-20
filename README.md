@@ -43,5 +43,5 @@ if not check_crc(b'\x00\x12\x34\xAB\xCD\xEF\xD2\xD4'):
 ## Testing
 
 ```shell
-$ python -m unittest discover -v -p "test.py"
+$ python -m unittest discover -v -p "tests.py"
 ```

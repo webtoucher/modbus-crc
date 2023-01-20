@@ -18,7 +18,7 @@ setup(name='modbus-crc',
           'Operating System :: Unix',
           'Operating System :: MacOS',
       ],
-      packages=find_packages(where='src'),
+      packages=['modbus_crc'],
       long_description=open('README.md').read(),
       long_description_content_type='text/markdown',
       zip_safe=False)
