@@ -1,5 +1,8 @@
 dist/
+build/
 __pycache__/
 *.py[cod]
 *.egg-info/
-.idea
+.idea/
+.venv/
+.pytest_cache/

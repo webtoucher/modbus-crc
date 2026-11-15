@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "modbus-crc"
+description = "CRC-16 calculation for Modbus protocol"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "BSD-3-Clause"
+license-files = ["LICENSE.md"]
+authors = [
+    { name = "Alexey Kuznetsov", email = "webtoucher@ya.ru" },
+]
+keywords = ["modbus", "crc", "crc16", "checksum", "serial", "rtu"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Operating System :: MacOS",
+    "Typing :: Typed",
+]
+dynamic = ["version"]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.urls]
+Homepage = "https://github.com/webtoucher/modbus-crc"
+Repository = "https://github.com/webtoucher/modbus-crc"
+Issues = "https://github.com/webtoucher/modbus-crc/issues"
+
+[tool.setuptools]
+packages = ["modbus_crc"]
+zip-safe = false
+
+[tool.setuptools.dynamic]
+version = { attr = "modbus_crc.__version__" }
+
+[tool.setuptools.package-data]
+modbus_crc = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
