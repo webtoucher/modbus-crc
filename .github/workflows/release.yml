@@ -3,15 +3,27 @@ name: release
 on:
   push:
     tags: ["v*"]
+  # Allows re-publishing artifacts and the GitHub Release for an existing tag
+  # without moving the tag itself.
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing tag to publish, e.g. v2.0"
+        required: true
 
 permissions:
   contents: read
+
+env:
+  TAG_NAME: ${{ github.event.inputs.tag || github.ref_name }}
 
 jobs:
   build:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
       - uses: actions/setup-python@v7
         with:
           python-version: "3.15"
@@ -27,10 +39,10 @@ jobs:
           import os, pathlib, re
           text = pathlib.Path("modbus_crc/__init__.py").read_text(encoding="utf-8")
           version = re.search(r'__version__ = "([^"]+)"', text).group(1)
-          tag = os.environ["GITHUB_REF_NAME"].lstrip("v")
+          tag = os.environ["TAG_NAME"].lstrip("v")
           if version != tag:
               raise SystemExit(f"tag {tag!r} does not match package version {version!r}")
-          print("package version", version)
+          print("package version", version, "tag", os.environ["TAG_NAME"])
           PY
       - name: Build sdist and wheel
         run: python -m build
@@ -73,10 +85,26 @@ jobs:
         with:
           name: dist
           path: dist/
+      # GH_REPO is explicit on purpose: there is no checkout in this job, so
+      # gh cannot infer the repository from a git remote and would fail.
       - name: Create GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
-          gh release create "$GITHUB_REF_NAME" dist/* \
-            --title "modbus-crc $GITHUB_REF_NAME" \
-            --generate-notes
+          set +e
+          output=$(gh release create "$TAG_NAME" dist/* \
+            --title "modbus-crc $TAG_NAME" \
+            --generate-notes 2>&1)
+          status=$?
+          echo "$output"
+          if [ $status -eq 0 ]; then
+            exit 0
+          fi
+          if grep -qi "already exists" <<< "$output"; then
+            echo "Release $TAG_NAME already exists, uploading artifacts instead"
+            gh release upload "$TAG_NAME" dist/* --clobber
+            exit $?
+          fi
+          echo "::error::gh release create failed: $(echo "$output" | tr '\n' ' ' | cut -c1-700)"
+          exit 1
