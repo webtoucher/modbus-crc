@@ -10,7 +10,7 @@ requires-python = ">=3.9"
 license = "BSD-3-Clause"
 license-files = ["LICENSE.md"]
 authors = [
-    { name = "Alexey Kuznetsov", email = "webtoucher@ya.ru" },
+    { name = "webtoucher", email = "webtoucher@ya.ru" },
 ]
 keywords = ["modbus", "crc", "crc16", "checksum", "serial", "rtu"]
 classifiers = [

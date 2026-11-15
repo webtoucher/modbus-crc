@@ -15,7 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   normalized once with `memoryview(data).tobytes()` and both functions see the same
   bytes.
 - The module docstring and `LICENSE.md` had the CRC polynomial the wrong way round and
-  a single-year copyright: they now read `0x8005` (reflected `0xA001`) and `2023–2026`.
+  a single-year copyright: they now read `0x8005` (reflected `0xA001`), `2023–2026` and
+  the same copyright holder as `pyproject.toml` (`webtoucher`).
 - The release workflow extracted the CHANGELOG notes with `python`, which a job without
   `actions/setup-python` does not guarantee; it calls `python3` now.
 - The speed claim held only for some interpreters. `benchmarks/benchmark_crc.py` now
