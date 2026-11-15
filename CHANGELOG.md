@@ -5,6 +5,39 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.1] - 2026-11-15
+
+### Fixed
+
+- `add_crc` and `crc16` disagreed on a `memoryview` with a non-byte item format: the
+  frame received the raw bytes of the view, while the checksum was computed from its
+  items truncated to 8 bits, so `check_crc` rejected the result. Input is now
+  normalized once with `memoryview(data).tobytes()` and both functions see the same
+  bytes.
+- The module docstring and `LICENSE.md` had the CRC polynomial the wrong way round and
+  a single-year copyright: they now read `0x8005` (reflected `0xA001`) and `2023–2026`.
+- The release workflow extracted the CHANGELOG notes with `python`, which a job without
+  `actions/setup-python` does not guarantee; it calls `python3` now.
+- The speed claim held only for some interpreters. `benchmarks/benchmark_crc.py` now
+  reproduces the comparison, and the README quotes its results per interpreter instead
+  of a single number.
+
+### Added
+
+- `benchmarks/benchmark_crc.py`: throughput comparison with the 1.x implementation.
+- Free-threaded `3.13t` in the CI matrix, so the compatibility statement is backed by a
+  test run.
+- `.gitattributes` with `* text=auto eol=lf`.
+
+### Changed
+
+- `BytesLike` is part of `__all__`, as the README always described it.
+- `pyproject.toml`: the no-op `zip-safe` flag is gone and the `Programming Language`
+  classifiers are back, so PyPI lists the supported versions.
+- Test suite: exhaustive checks for every one-byte and two-byte input, all 255
+  corruption masks at every byte position, no self-comparing assertions, and the
+  exported names are resolved through the module instead of compared with a literal.
+
 ## [2.1] - 2026-11-15
 
 ### Added
@@ -47,6 +80,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Python 3.9 or newer is required. `Requires-Python` is declared now, so older
   interpreters get a clear install error instead of failing at runtime.
+- The `LOW_BYTES` and `HIGH_BYTES` module attributes are gone: `from modbus_crc import
+  LOW_BYTES` raises `ImportError`.
+- `add_crc(bytearray(...))` returns `bytes`, not `bytearray`: code that edits the
+  result in place needs `bytearray(add_crc(...))`.
 
 ## [1.3] - 2023-01-20
 

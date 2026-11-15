@@ -1,0 +1,3 @@
+# Normalize line endings: LF in the repository and in every working tree,
+# so a Windows checkout does not produce CRLF noise in diffs.
+* text=auto eol=lf

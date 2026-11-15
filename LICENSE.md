@@ -1,4 +1,4 @@
-Copyright (c) 2023, Alexey Kuznetsov
+Copyright (c) 2023–2026, Alexey Kuznetsov
 
 All rights reserved.
 

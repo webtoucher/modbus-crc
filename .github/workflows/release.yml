@@ -88,9 +88,11 @@ jobs:
         with:
           name: dist
           path: dist/
+      # This job has no setup-python step, so it must not rely on a bare
+      # `python`: Ubuntu images only guarantee `python3`.
       - name: Take release notes from CHANGELOG.md
         run: |
-          python - <<'PY'
+          python3 - <<'PY'
           import pathlib, re
           version = re.search(
               r'__version__ = "([^"]+)"',

@@ -16,6 +16,15 @@ keywords = ["modbus", "crc", "crc16", "checksum", "serial", "rtu"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
     "Topic :: Software Development :: Libraries",
     "Operating System :: Microsoft :: Windows",
     "Operating System :: POSIX",
@@ -37,7 +46,6 @@ Changelog = "https://github.com/webtoucher/modbus-crc/blob/master/CHANGELOG.md"
 
 [tool.setuptools]
 packages = ["modbus_crc"]
-zip-safe = false
 
 [tool.setuptools.dynamic]
 version = { attr = "modbus_crc.__version__" }

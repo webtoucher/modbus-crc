@@ -18,7 +18,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14", "3.15"]
+        # "3.13t" is a free-threaded build (no GIL); the manifest has it for
+        # linux-24.04, so the README claim is verified by a real run.
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.13t", "3.14", "3.15"]
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
