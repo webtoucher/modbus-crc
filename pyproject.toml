@@ -33,6 +33,7 @@ dev = ["pytest>=7"]
 Homepage = "https://github.com/webtoucher/modbus-crc"
 Repository = "https://github.com/webtoucher/modbus-crc"
 Issues = "https://github.com/webtoucher/modbus-crc/issues"
+Changelog = "https://github.com/webtoucher/modbus-crc/blob/master/CHANGELOG.md"
 
 [tool.setuptools]
 packages = ["modbus_crc"]

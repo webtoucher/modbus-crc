@@ -12,7 +12,7 @@ from typing import Union
 
 __all__ = ["crc16", "add_crc", "check_crc"]
 
-__version__ = "2.0"
+__version__ = "2.1"
 
 BytesLike = Union[bytes, bytearray, memoryview]
 

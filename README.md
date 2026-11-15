@@ -34,7 +34,7 @@ $ pip install modbus-crc
 Or you can add it as dependency in requirements.txt file of your python application:
 
 ```
-modbus-crc~=2.0
+modbus-crc~=2.1
 ```
 
 ## Usage
@@ -154,6 +154,11 @@ The public API is unchanged, so most projects need no code changes. What did cha
 - **Faster and clearer internals:** one table instead of two, a single 16-bit register
   instead of two byte variables, no `int()` call per byte (over 20% faster per KB on
   CPython 3.11).
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md). GitHub Releases are generated from the matching
+entry of that file, so the history is available both in git and on the releases page.
 
 ## License
 
